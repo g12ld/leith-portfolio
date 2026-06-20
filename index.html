@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ليث | متخصص في تصميم متاجر سلة وزد الاحترافية">
+  <title>ليث | مصمم متاجر سلة وزد</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C870;
+      --gold-dim: rgba(201,168,76,0.15);
+      --bg: #06060F;
+      --bg2: #0C0C1A;
+      --bg3: #111125;
+      --text: #E2E2E8;
+      --muted: #7A7A9A;
+      --border: rgba(201,168,76,0.18);
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 18px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,6,15,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+    nav.scrolled { padding: 12px 40px; }
+
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800; color: var(--gold);
+      letter-spacing: .5px; text-decoration: none;
+    }
+    .nav-logo span { color: var(--text); }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-weight: 500;
+      font-size: .95rem; transition: color .25s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; right: 0;
+      width: 0; height: 2px; background: var(--gold); border-radius: 2px;
+      transition: width .25s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold); color: #06060F; font-weight: 700;
+      padding: 9px 22px; border-radius: 50px; font-size: .9rem;
+      text-decoration: none; transition: background .25s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      border-radius: 50px; padding: 6px 18px; margin-bottom: 28px;
+      font-size: .85rem; color: var(--gold-light); font-weight: 500;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 900; line-height: 1.15;
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, #F5E0A0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted); max-width: 560px; margin: 0 auto 40px;
+    }
+
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold); color: #06060F; font-weight: 700;
+      padding: 14px 32px; border-radius: 50px; font-size: 1rem;
+      text-decoration: none; transition: all .25s;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,.35); }
+
+    .btn-outline {
+      background: transparent; color: var(--gold); font-weight: 600;
+      padding: 13px 30px; border-radius: 50px; font-size: 1rem;
+      border: 1.5px solid var(--border); text-decoration: none;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: var(--gold-dim); transform: translateY(-2px); }
+
+    /* ── STATS ── */
+    .stats {
+      padding: 60px 40px;
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center; padding: 20px 50px;
+      border-left: 1px solid var(--border);
+    }
+    .stat:last-child { border-left: none; }
+    .stat-num {
+      font-size: 2.8rem; font-weight: 900; color: var(--gold);
+      line-height: 1; display: block;
+    }
+    .stat-label { font-size: .9rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 90px 20px; }
+    .container { max-width: 1140px; margin: 0 auto; }
+
+    .sec-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      border-radius: 50px; padding: 5px 16px; margin-bottom: 16px;
+      font-size: .82rem; color: var(--gold); font-weight: 600;
+    }
+    .sec-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+    .sec-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; margin-bottom: 14px;
+    }
+    .sec-title span { color: var(--gold); }
+    .sec-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; margin-top: 50px;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 18px; font-size: 1.05rem; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 50px; padding: 6px 16px; font-size: .85rem;
+      color: var(--gold-light); font-weight: 500;
+    }
+    .about-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px;
+      position: relative; overflow: hidden;
+    }
+    .about-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(201,168,76,.1) 0%, transparent 70%);
+    }
+    .about-icon {
+      font-size: 2.5rem; margin-bottom: 16px; display: block;
+    }
+    .about-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .about-card p { color: var(--muted); font-size: .95rem; }
+
+    /* ── SERVICES ── */
+    .services-bg { background: var(--bg2); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 30px;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .service-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, var(--bg3) 100%);
+    }
+
+    .service-badge {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--gold); color: #06060F;
+      font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 50px;
+    }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+    }
+    .service-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+    .service-price {
+      font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 20px;
+    }
+    .service-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+
+    .service-features { list-style: none; margin-bottom: 28px; }
+    .service-features li {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--muted); font-size: .92rem; padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .service-features li:last-child { border-bottom: none; }
+    .check { color: var(--gold); font-size: 1rem; font-weight: 700; }
+
+    .service-btn {
+      width: 100%; padding: 13px; border-radius: 50px;
+      border: 1.5px solid var(--border); background: transparent;
+      color: var(--gold); font-family: 'Tajawal',sans-serif;
+      font-size: .95rem; font-weight: 600; cursor: pointer;
+      transition: all .25s; text-align: center; display: block;
+      text-decoration: none;
+    }
+    .service-btn:hover, .service-card.featured .service-btn {
+      background: var(--gold); color: #06060F; border-color: var(--gold);
+    }
+    .service-card.featured .service-btn:hover { background: var(--gold-light); }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-filter {
+      display: flex; gap: 12px; flex-wrap: wrap; margin: 40px 0 32px;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 50px; cursor: pointer;
+      font-family: 'Tajawal',sans-serif; font-size: .88rem; font-weight: 600;
+      border: 1.5px solid var(--border); background: transparent; color: var(--muted);
+      transition: all .25s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--gold); color: #06060F; border-color: var(--gold);
+    }
+
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+
+    .portfolio-card {
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; aspect-ratio: 4/3;
+      background: var(--bg3); border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform .3s, border-color .3s;
+    }
+    .portfolio-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+
+    .portfolio-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s;
+    }
+    .portfolio-card:hover .portfolio-img { transform: scale(1.05); }
+
+    .portfolio-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: var(--muted);
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+    }
+    .placeholder-icon { font-size: 2.5rem; opacity: .4; }
+    .placeholder-label { font-size: .8rem; opacity: .5; }
+
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(6,6,15,.95) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 20px;
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .portfolio-overlay p { font-size: .8rem; color: var(--gold); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-bg { background: var(--bg2); }
+
+    .testi-wrap { overflow: hidden; }
+    .testi-head { text-align: center; margin-bottom: 50px; }
+
+    .testi-marquee {
+      overflow: hidden; position: relative;
+      mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+    .testi-track {
+      display: flex; gap: 16px;
+      animation: marquee-rtl 60s linear infinite;
+      width: max-content;
+    }
+    .testi-track:hover { animation-play-state: paused; }
+    .testi-track-set { display: flex; gap: 16px; }
+
+    @keyframes marquee-rtl {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .testi-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px; width: 240px; flex-shrink: 0;
+      transition: border-color .3s;
+    }
+    .testi-card:hover { border-color: var(--gold); }
+    .testi-top { display: flex; align-items: center; gap: 10px; }
+    .testi-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .85rem; flex-shrink: 0;
+    }
+    .av-1 { background: linear-gradient(135deg,#C9A84C,#8B6914); }
+    .av-2 { background: linear-gradient(135deg,#6C63FF,#3730A3); }
+    .av-3 { background: linear-gradient(135deg,#06B6D4,#0369A1); }
+    .av-4 { background: linear-gradient(135deg,#10B981,#047857); }
+    .av-5 { background: linear-gradient(135deg,#F43F5E,#BE123C); }
+    .testi-name { font-size: .85rem; font-weight: 600; }
+    .testi-stars { color: var(--gold); font-size: .72rem; margin-top: 2px; }
+    .testi-text { font-size: .82rem; color: var(--muted); line-height: 1.7; margin-top: 10px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center; padding: 100px 20px;
+      background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, transparent 50%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 { font-size: clamp(1.8rem,4vw,3rem); font-weight: 900; margin-bottom: 18px; }
+    .cta-section p { color: var(--muted); font-size: 1.1rem; max-width: 480px; margin: 0 auto 36px; }
+
+    .contact-links {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 26px; border-radius: 50px;
+      border: 1.5px solid var(--border); background: var(--bg2);
+      color: var(--text); text-decoration: none; font-weight: 600; font-size: .95rem;
+      transition: all .25s;
+    }
+    .contact-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .contact-link.wa { background: var(--gold); border-color: var(--gold); color: #06060F; }
+    .contact-link.wa:hover { background: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 30px 40px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg); flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--gold); }
+    footer p { color: var(--muted); font-size: .85rem; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .stats { gap: 0; }
+      .stat { padding: 20px 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .stat { padding: 16px 18px; border-left: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .stats { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">ليث <span>| Designer</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">من أنا</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#portfolio">أعمالي</a></li>
+    <li><a href="#testimonials">العملاء</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">تواصل معي</a>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="hero-badge fade-up">
+      <span class="hero-badge-dot"></span>
+      متخصص متاجر سلة وزد
+    </div>
+    <h1 class="fade-up" style="transition-delay:.1s">
+      أحوّل متجرك إلى<br>
+      <em>تجربة تبيع بنفسها</em>
+    </h1>
+    <p class="hero-sub fade-up" style="transition-delay:.2s">
+      تصاميم متاجر إلكترونية احترافية على منصتَي سلة وزد — جاهزة للمبيعات، سريعة، وتعكس هويتك التجارية بالكامل.
+    </p>
+    <div class="hero-btns fade-up" style="transition-delay:.3s">
+      <a href="#portfolio" class="btn-primary">شاهد أعمالي ←</a>
+      <a href="#contact" class="btn-outline">احجز استشارة مجانية</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS ══════════ -->
+<div class="stats">
+  <div class="stat fade-up">
+    <span class="stat-num" data-target="150">0</span>
+    <div class="stat-label">متجر مُنجز</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:.1s">
+    <span class="stat-num" data-target="98">0</span>
+    <div class="stat-label">% رضا العملاء</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:.2s">
+    <span class="stat-num" data-target="3">0</span>
+    <div class="stat-label">سنوات خبرة</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:.3s">
+    <span class="stat-num" data-target="48">0</span>
+    <div class="stat-label">ساعة كحد أقصى للتسليم</div>
+  </div>
+</div>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-tag fade-up"><span class="sec-tag-dot"></span>من أنا</div>
+    <h2 class="sec-title fade-up">مصمم متاجر <span>سلة وزد</span> باحتراف</h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          أنا <strong style="color:var(--gold-light)">ليث</strong>، متخصص في تصميم وبناء متاجر إلكترونية على منصتَي سلة وزد.
+          أجمع بين الذوق البصري العالي والفهم العميق لسلوك المشتري لأبني متاجر لا تبدو جميلة فحسب — بل تُحوّل الزوار إلى مشترين.
+        </p>
+        <p>
+          من اختيار الهوية البصرية وتنظيم المحتوى، إلى الإعدادات التقنية وربط البوابات — أتكفّل بكل شيء حتى تُطلق متجرك بثقة.
+        </p>
+        <div class="about-tags">
+          <span class="tag">سلة</span>
+          <span class="tag">زد</span>
+          <span class="tag">هوية بصرية</span>
+          <span class="tag">تحسين التحويل</span>
+          <span class="tag">واجهة مستخدم</span>
+          <span class="tag">تجربة تسوق</span>
+        </div>
+      </div>
+      <div class="about-card fade-up" style="transition-delay:.15s">
+        <span class="about-icon">🏆</span>
+        <h3>الجودة أولاً</h3>
+        <p>كل متجر أصمّمه يمر بمراجعة شاملة قبل التسليم — تأكد من الاتساق البصري، سرعة التحميل، والتوافق مع الجوال.</p>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+            <span style="font-size:.88rem;color:var(--muted)">رضا العملاء</span>
+            <span style="font-size:.88rem;color:var(--gold)">98%</span>
+          </div>
+          <div style="background:var(--bg);border-radius:50px;height:6px;overflow:hidden">
+            <div style="background:linear-gradient(90deg,var(--gold),var(--gold-light));width:98%;height:100%;border-radius:50px"></div>
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+            <span style="font-size:.88rem;color:var(--muted)">سرعة التسليم</span>
+            <span style="font-size:.88rem;color:var(--gold)">خلال 48 ساعة</span>
+          </div>
+          <div style="background:var(--bg);border-radius:50px;height:6px;overflow:hidden">
+            <div style="background:linear-gradient(90deg,var(--gold),var(--gold-light));width:92%;height:100%;border-radius:50px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section id="services" class="services-bg">
+  <div class="container">
+    <div class="sec-tag fade-up"><span class="sec-tag-dot"></span>الخدمات والباقات</div>
+    <h2 class="sec-title fade-up">اختر الباقة <span>المناسبة لك</span></h2>
+    <p class="sec-sub fade-up">باقات مصممة لتناسب كل مرحلة — سواء كنت تبدأ من الصفر أو تطوّر متجرك القائم.</p>
+
+    <div class="services-grid">
+
+      <!-- Bronze -->
+      <div class="service-card fade-up">
+        <div class="service-icon">🥈</div>
+        <div class="service-name">الباقة البرونزية</div>
+        <div class="service-price">499 <span>ر.س</span></div>
+        <ul class="service-features">
+          <li><span class="check">✓</span> إعداد المتجر الأساسي</li>
+          <li><span class="check">✓</span> تركيب وضبط القالب</li>
+          <li><span class="check">✓</span> تنسيق الألوان والخطوط</li>
+          <li><span class="check">✓</span> إضافة 10 منتجات</li>
+          <li><span class="check">✓</span> ربط وسائل الدفع</li>
+          <li style="opacity:.4"><span>—</span> تصميم الشعار</li>
+          <li style="opacity:.4"><span>—</span> دعم لمدة شهر</li>
+        </ul>
+        <a href="#contact" class="service-btn">احجز الآن</a>
+      </div>
+
+      <!-- Gold (Featured) -->
+      <div class="service-card featured fade-up" style="transition-delay:.1s">
+        <span class="service-badge">الأكثر طلباً</span>
+        <div class="service-icon">⭐</div>
+        <div class="service-name">الباقة الذهبية</div>
+        <div class="service-price">999 <span>ر.س</span></div>
+        <ul class="service-features">
+          <li><span class="check">✓</span> تصميم احترافي متكامل</li>
+          <li><span class="check">✓</span> هوية بصرية وشعار</li>
+          <li><span class="check">✓</span> تنسيق كامل للمتجر</li>
+          <li><span class="check">✓</span> إضافة 30 منتجاً</li>
+          <li><span class="check">✓</span> ربط الدفع والشحن</li>
+          <li><span class="check">✓</span> صفحات مخصصة (عن، تواصل)</li>
+          <li><span class="check">✓</span> دعم شهر كامل</li>
+        </ul>
+        <a href="#contact" class="service-btn">احجز الآن</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="service-card fade-up" style="transition-delay:.2s">
+        <div class="service-icon">💎</div>
+        <div class="service-name">الباقة الاحترافية</div>
+        <div class="service-price">1,799 <span>ر.س</span></div>
+        <ul class="service-features">
+          <li><span class="check">✓</span> كل مزايا الذهبية</li>
+          <li><span class="check">✓</span> تصميم مخصص بالكامل</li>
+          <li><span class="check">✓</span> منتجات غير محدودة</li>
+          <li><span class="check">✓</span> تحسين محركات البحث</li>
+          <li><span class="check">✓</span> ربط المنصات الإضافية</li>
+          <li><span class="check">✓</span> تقرير أداء المتجر</li>
+          <li><span class="check">✓</span> دعم 3 أشهر مستمر</li>
+        </ul>
+        <a href="#contact" class="service-btn">احجز الآن</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PORTFOLIO ══════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-tag fade-up"><span class="sec-tag-dot"></span>معرض الأعمال</div>
+    <h2 class="sec-title fade-up">أعمالي <span>الأخيرة</span></h2>
+    <p class="sec-sub fade-up">نماذج من متاجر صممتها على منصتَي سلة وزد — كل متجر بهوية مستقلة.</p>
+
+    <div class="portfolio-filter fade-up">
+      <button class="filter-btn active" onclick="filterPortfolio('all',this)">الكل</button>
+      <button class="filter-btn" onclick="filterPortfolio('salla',this)">سلة</button>
+      <button class="filter-btn" onclick="filterPortfolio('zid',this)">زد</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+
+      <!-- REPLACE the placeholder divs below with your actual work screenshots -->
+      <!-- To add a real image: replace the placeholder div with <img class="portfolio-img" src="images/work1.jpg" alt="اسم المتجر"> -->
+
+      <div class="portfolio-card" data-cat="salla" title="متجر أزياء - سلة">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">🛍️</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر أزياء نسائية</h3>
+          <p>سلة • هوية ذهبية أنيقة</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-cat="zid" title="متجر إلكترونيات - زد">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">📱</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر إلكترونيات</h3>
+          <p>زد • تصميم تقني مودرن</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-cat="salla" title="متجر عطور - سلة">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">🌹</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر عطور فاخرة</h3>
+          <p>سلة • طابع فاخر داكن</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-cat="zid" title="متجر أثاث - زد">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">🛋️</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر أثاث وديكور</h3>
+          <p>زد • نمط عصري راقٍ</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-cat="salla" title="متجر أطفال - سلة">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">🧸</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر ملابس أطفال</h3>
+          <p>سلة • ألوان مرحة وحيوية</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-cat="zid" title="متجر رياضي - زد">
+        <div class="portfolio-placeholder">
+          <span class="placeholder-icon">⚽</span>
+          <span class="placeholder-label">صورة العمل هنا</span>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>متجر معدات رياضية</h3>
+          <p>زد • طاقة وحركة ونشاط</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section id="testimonials" class="testi-bg">
+  <div class="container">
+    <div class="testi-wrap">
+      <div class="testi-head fade-up">
+        <div class="sec-tag" style="justify-content:center"><span class="sec-tag-dot"></span>آراء العملاء</div>
+        <h2 class="sec-title">ماذا قال <span>عملاؤنا</span></h2>
+      </div>
+
+      <div class="testi-marquee" aria-label="آراء العملاء المتحركة">
+        <div class="testi-track">
+          <div class="testi-track-set">
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ع</div><div><div class="testi-name">عبدالله الحربي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الباقة الذهبية ممتازة، التصميم مرتب وخدمة الدعم رائعة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ف</div><div><div class="testi-name">فيصل المطيري</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"التصميم جميل، بس ممكن يكون التواصل أسرع شوي، عموماً ممتاز."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ن</div><div><div class="testi-name">نواف العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الباقة الاحترافية أعطت متجري شكل احترافي، أنصح فيها."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">م</div><div><div class="testi-name">محمد الشهري</div><div class="testi-stars">★★★★<span style="opacity:.15">★</span></div></div></div><p class="testi-text">"الخدمة ممتازة، التصميم مرتب، لكن حبيت لو يكون فيه شرح أكثر."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">س</div><div><div class="testi-name">سارة القحطاني</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"متجري صار جذاب للعملاء بعد الباقة الذهبية، تجربة رائعة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ب</div><div><div class="testi-name">بندر السبيعي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"السرعة في التنفيذ ممتازة، التصميم احترافي جدًا."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ه</div><div><div class="testi-name">هيفاء الرويلي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم سلس وواضح، متجري صار مرتب أكثر."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">س</div><div><div class="testi-name">سالم اليامي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الباقة الذهبية أنسب اختيار، جودة التصميم ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">أ</div><div><div class="testi-name">أمل الدوسري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"تصميم مرتب ومريح للعين، خدمة رائعة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">ت</div><div><div class="testi-name">تركي العنزي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"التصميم سهل الاستخدام وفريق الدعم متعاون جدًا."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ل</div><div><div class="testi-name">لطيفة الحربي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"كل شيء ممتاز، متجري صار أكثر احترافية."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ع</div><div><div class="testi-name">عبدالعزيز المطيري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم أنيق وجذاب، خدمة الدعم ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ر</div><div><div class="testi-name">ريم الزهراني</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"الباقة الذهبية تجربة جيدة جدًا، بس يمكن إضافة بعض التفاصيل."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">م</div><div><div class="testi-name">ماجد العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الخدمة ممتازة من البداية للنهاية، فريق محترف."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">د</div><div><div class="testi-name">دانة الشهري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم واضح وسهل التعامل معه، متجري صار مرتب."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">خ</div><div><div class="testi-name">خالد اليقمي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"خدمة سريعة، التصميم احترافي لكن حبيت لو فيه شرح أكثر."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ن</div><div><div class="testi-name">نواف القحطاني</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"متجري صار أفضل بكثير بعد الباقة الذهبية."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ف</div><div><div class="testi-name">فاطمة الشهري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"أنصح كل شخص يفتح متجره بالباقة الذهبية، تصميم ممتاز."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">ع</div><div><div class="testi-name">عبدالمجيد الحربي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"التصميم سلس وواضح، بس ممكن تحسين بسيط على ترتيب القوائم."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">و</div><div><div class="testi-name">وضاح المطيري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم احترافي والفريق متعاون جدًا."</p></div>
+          </div>
+          <div class="testi-track-set" aria-hidden="true">
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">م</div><div><div class="testi-name">مها العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"متجري صار مرتب وواضح للعملاء، تجربة رائعة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">س</div><div><div class="testi-name">سعد اليامي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"الباقة الذهبية قدمت لي متجر احترافي، بعض التفاصيل تحتاج تعديل."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ع</div><div><div class="testi-name">عبدالله السبيعي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"خدمة ممتازة، تصميم مرتب وواضح."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">ع</div><div><div class="testi-name">العنود الشهري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم جميل جداً، متجري صار أكثر احترافية."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">ب</div><div><div class="testi-name">بندر الحربي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"الباقة الذهبية تستحق كل ريال، بس فيه بعض الخيارات يحتاج شرح."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ن</div><div><div class="testi-name">نورة المطيري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"تصميم مرتب ومنظم، كل شيء واضح وسهل."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ف</div><div><div class="testi-name">فيصل العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"جودة التصميم ممتازة، فريق العمل متعاون."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ح</div><div><div class="testi-name">حصه القحطاني</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"متجري صار مرتب أكثر من قبل، تجربة ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">خ</div><div><div class="testi-name">خالد الشهري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"السرعة في التنفيذ والدقة في التصميم ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">س</div><div><div class="testi-name">سمية العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الباقة الذهبية كانت الخيار الأفضل، تصميم أنيق."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">م</div><div><div class="testi-name">محمد السبيعي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"احترافيين جدًا في التصميم، النتائج رائعة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ن</div><div><div class="testi-name">نجلاء الحربي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"تصميم سلس وجذاب، الدعم الفني ممتاز."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ع</div><div><div class="testi-name">عبدالله المطيري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"متجري صار أكثر احترافية بعد الخدمة، أنصح الجميع."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">ر</div><div><div class="testi-name">ريم العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الباقة الذهبية أنصح بها لكل من يريد متجر مرتب واحترافي."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">ت</div><div><div class="testi-name">تركي اليامي</div><div class="testi-stars">★★★★<span style="opacity:.3">★</span></div></div></div><p class="testi-text">"متجري صار جاهز للاستخدام والبيع بشكل احترافي."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ل</div><div><div class="testi-name">لبنى القحطاني</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم احترافي وسهل، والنتيجة ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-2">ب</div><div><div class="testi-name">بدر الشهري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم مرتب وواضح، فريق الدعم متعاون."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-3">ف</div><div><div class="testi-name">فهد المطيري</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"التصميم مرتب وسهل الاستخدام، الجودة ممتازة."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-4">م</div><div><div class="testi-name">محمد القحطاني</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"الخدمة ممتازة، التصميم أنيق وسلس."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-5">ه</div><div><div class="testi-name">هدى العنزي</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"متجري صار جاهز بالكامل للبيع، تصميم ممتاز."</p></div>
+            <div class="testi-card"><div class="testi-top"><div class="testi-av av-1">ف</div><div><div class="testi-name">فواز القحطاني</div><div class="testi-stars">★★★★★</div></div></div><p class="testi-text">"تصميم مرتب وواضح، متجري صار جذاب للعملاء."</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA / CONTACT ══════════ -->
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="sec-tag fade-up" style="justify-content:center"><span class="sec-tag-dot"></span>ابدأ مشروعك</div>
+    <h2 class="fade-up">جاهز تطلق متجرك؟ <span style="color:var(--gold)">تواصل الآن</span></h2>
+    <p class="fade-up" style="margin:0 auto 36px">متاح للعمل على متاجر جديدة — ابدأ بمحادثة مجانية واتفق على تفاصيل مشروعك.</p>
+    <div class="contact-links fade-up">
+      <a href="https://wa.me/966XXXXXXXXX" target="_blank" class="contact-link wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.51 5.828L0 24l6.335-1.661A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.357-.214-3.764.987.987-3.677-.234-.379A9.818 9.818 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+        واتساب
+      </a>
+      <a href="mailto:mr.leith9999@gmail.com" class="contact-link">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        البريد الإلكتروني
+      </a>
+      <a href="https://twitter.com/" target="_blank" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        تويتر / X
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">ليث | Designer</div>
+  <p>© 2025 جميع الحقوق محفوظة — مصمم متاجر سلة وزد</p>
+</footer>
+
+<script>
+  // Nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, suffix='') {
+    let start = 0;
+    const duration = 1800;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        animateCounter(el, target);
+        statsObserver.unobserve(el);
+      }
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => statsObserver.observe(el));
+
+  // Portfolio filter
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
