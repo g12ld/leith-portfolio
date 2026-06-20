@@ -375,18 +375,20 @@
 
     .testi-marquee {
       overflow: hidden; position: relative;
-      mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
     }
     .testi-track {
       display: flex; gap: 16px;
-      animation: marquee-rtl 60s linear infinite;
+      direction: ltr;
+      animation: scroll-ltr 70s linear infinite;
       width: max-content;
     }
     .testi-track:hover { animation-play-state: paused; }
     .testi-track-set { display: flex; gap: 16px; }
 
-    @keyframes marquee-rtl {
-      0% { transform: translateX(0); }
+    @keyframes scroll-ltr {
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
