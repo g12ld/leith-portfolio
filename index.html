@@ -379,13 +379,13 @@
       mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
     }
     .testi-track {
-      display: flex; gap: 16px;
+      display: flex; gap: 0;
       direction: ltr;
       animation: scroll-ltr 70s linear infinite;
       width: max-content;
     }
     .testi-track:hover { animation-play-state: paused; }
-    .testi-track-set { display: flex; gap: 16px; }
+    .testi-track-set { display: flex; gap: 16px; padding-right: 16px; }
 
     @keyframes scroll-ltr {
       0%   { transform: translateX(0); }
