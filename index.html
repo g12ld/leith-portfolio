@@ -308,104 +308,46 @@
       box-shadow: 0 20px 50px rgba(201,168,76,.15);
     }
 
-    /* Store Mockup Styles */
-    .store-mockup {
+    /* ── SCREENSHOT CARDS ── */
+    .portfolio-img {
       width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      overflow: hidden; font-family: 'Tajawal', sans-serif;
+      object-fit: cover; object-position: top center;
+      display: block;
+      transition: object-position 5s ease;
     }
-
-    /* Browser Chrome */
-    .mock-chrome {
-      background: #1a1a2e; padding: 6px 10px;
-      display: flex; align-items: center; gap: 5px;
-      border-bottom: 1px solid rgba(255,255,255,.06); flex-shrink: 0;
-    }
-    .mock-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-    }
-    .mock-dot-r { background: #FF5F56; }
-    .mock-dot-y { background: #FFBD2E; }
-    .mock-dot-g { background: #27C93F; }
-    .mock-url {
-      background: rgba(255,255,255,.06); border-radius: 4px;
-      padding: 2px 8px; font-size: .55rem; color: rgba(255,255,255,.3);
-      margin-right: 8px; flex: 1;
-    }
-
-    /* Store nav */
-    .mock-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 6px 10px; flex-shrink: 0;
-    }
-    .mock-logo-box {
-      font-size: .65rem; font-weight: 800; letter-spacing: .5px;
-    }
-    .mock-nav-links {
-      display: flex; gap: 8px;
-    }
-    .mock-nav-link {
-      width: 24px; height: 4px; border-radius: 2px;
-      opacity: .3;
-    }
-    .mock-cart {
-      width: 14px; height: 14px; border-radius: 3px;
-      border: 1.5px solid; opacity: .5;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .4rem;
-    }
-
-    /* Hero banner */
-    .mock-hero {
-      display: flex; align-items: center;
-      padding: 10px 10px; gap: 8px; flex-shrink: 0;
-    }
-    .mock-hero-text { flex: 1; }
-    .mock-h1 { height: 8px; border-radius: 4px; margin-bottom: 4px; width: 80%; }
-    .mock-h2 { height: 5px; border-radius: 3px; margin-bottom: 8px; width: 60%; opacity: .5; }
-    .mock-hero-btn {
-      height: 14px; width: 60px; border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .4rem; font-weight: 700; color: #fff;
-    }
-    .mock-hero-img {
-      width: 55px; height: 55px; border-radius: 8px;
-      flex-shrink: 0; opacity: .8;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-    }
-
-    /* Products grid */
-    .mock-products-label {
-      padding: 4px 10px 4px;
-      font-size: .55rem; font-weight: 700; opacity: .6;
-    }
-    .mock-products {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 5px; padding: 0 8px 8px; flex: 1;
-    }
-    .mock-product {
-      border-radius: 6px; overflow: hidden; display: flex;
-      flex-direction: column;
-    }
-    .mock-product-img {
-      height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .9rem;
-    }
-    .mock-product-info { padding: 3px 4px; }
-    .mock-product-name {
-      height: 3px; border-radius: 2px; width: 70%;
-      margin-bottom: 3px; opacity: .4;
-    }
-    .mock-product-price { height: 3px; border-radius: 2px; width: 45%; opacity: .7; }
+    .portfolio-card:hover .portfolio-img { object-position: bottom center; }
 
     /* Platform badge */
     .mock-platform {
-      position: absolute; top: 30px; left: 8px;
-      font-size: .5rem; font-weight: 700; padding: 2px 7px;
-      border-radius: 20px; letter-spacing: .5px;
+      position: absolute; top: 12px; left: 12px;
+      font-size: .72rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 20px; letter-spacing: .5px; z-index: 1;
     }
+
+    /* ── PLATFORMS STRIP ── */
+    .platforms-strip {
+      padding: 40px 20px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .platforms-label {
+      font-size: .75rem; color: var(--muted); margin-bottom: 24px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+    }
+    .platforms-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .platform-logo {
+      height: 38px; width: auto;
+      filter: grayscale(1) brightness(2);
+      opacity: 0.35;
+      transition: filter .3s, opacity .3s;
+      object-fit: contain;
+    }
+    .platform-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; }
 
     /* Overlay */
     .portfolio-overlay {
@@ -704,441 +646,222 @@
 
     <div class="portfolio-grid" id="portfolio-grid">
 
-      <!-- ① متجر أزياء نسائية - سلة (ذهبي/بيج) -->
+      <!-- 1: متجر الياسمين -->
       <div class="portfolio-card fade-up" data-cat="salla">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">salla.sa/store-fashion</div>
-          </div>
-          <div style="background:#faf7f2;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#fff;border-bottom:1px solid #f0ece4">
-              <div class="mock-logo-box" style="color:#8B6914;font-size:.7rem">✦ LUXE FASHION</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#8B6914"></div>
-                <div class="mock-nav-link" style="background:#8B6914"></div>
-                <div class="mock-nav-link" style="background:#8B6914"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#8B6914;color:#8B6914">🛍</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#f5e6cc,#fdf6ee);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#8B6914"></div>
-                <div class="mock-h2" style="background:#C9A84C"></div>
-                <div class="mock-hero-btn" style="background:#8B6914">تسوقي الآن</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#e8d5b7,#c9a87c)">👗</div>
-            </div>
-            <div class="mock-products-label" style="color:#8B6914">وصل حديثاً</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#fff;border:1px solid #f0ece4">
-                <div class="mock-product-img" style="background:#fdf0e0">👚</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#ccc"></div>
-                  <div class="mock-product-price" style="background:#C9A84C"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #f0ece4">
-                <div class="mock-product-img" style="background:#fde8f0">👒</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#ccc"></div>
-                  <div class="mock-product-price" style="background:#C9A84C"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #f0ece4">
-                <div class="mock-product-img" style="background:#e8f0fd">👜</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#ccc"></div>
-                  <div class="mock-product-price" style="background:#C9A84C"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #f0ece4">
-                <div class="mock-product-img" style="background:#f0fde8">💍</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#ccc"></div>
-                  <div class="mock-product-price" style="background:#C9A84C"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="images/yasmine.jpg" alt="متجر الياسمين" class="portfolio-img">
         <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر أزياء نسائية فاخرة</h3>
-          <p>هوية ذهبية أنيقة — Luxe Fashion</p>
-          <div class="ov-tags">
-            <span class="ov-tag">سلة</span>
-            <span class="ov-tag">أزياء</span>
-            <span class="ov-tag">هوية بصرية</span>
-          </div>
+          <h3>متجر الياسمين</h3>
+          <p>منتجات العناية بالشعر الطبيعية</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">تجميل</span></div>
         </div>
       </div>
 
-      <!-- ② متجر إلكترونيات - زد (داكن/أزرق) -->
-      <div class="portfolio-card fade-up" data-cat="zid" style="transition-delay:.1s">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">zid.sa/store-tech</div>
-          </div>
-          <div style="background:#050B18;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#0A1628;border-bottom:1px solid rgba(59,130,246,.2)">
-              <div class="mock-logo-box" style="color:#3B82F6;font-size:.7rem">⚡ TECH STORE</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#3B82F6"></div>
-                <div class="mock-nav-link" style="background:#3B82F6"></div>
-                <div class="mock-nav-link" style="background:#3B82F6"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#3B82F6;color:#3B82F6">🛒</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#0F1F3D,#1A3A6B);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#3B82F6"></div>
-                <div class="mock-h2" style="background:rgba(59,130,246,.4)"></div>
-                <div class="mock-hero-btn" style="background:#3B82F6">اطلب الآن</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#1e3a5f,#2d5fa0)">📱</div>
-            </div>
-            <div class="mock-products-label" style="color:#3B82F6">أحدث المنتجات</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#0A1628;border:1px solid rgba(59,130,246,.2)">
-                <div class="mock-product-img" style="background:#0F1F3D">💻</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#1e3a5f"></div>
-                  <div class="mock-product-price" style="background:#3B82F6"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#0A1628;border:1px solid rgba(59,130,246,.2)">
-                <div class="mock-product-img" style="background:#0F1F3D">🎮</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#1e3a5f"></div>
-                  <div class="mock-product-price" style="background:#3B82F6"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#0A1628;border:1px solid rgba(59,130,246,.2)">
-                <div class="mock-product-img" style="background:#0F1F3D">⌚</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#1e3a5f"></div>
-                  <div class="mock-product-price" style="background:#3B82F6"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#0A1628;border:1px solid rgba(59,130,246,.2)">
-                <div class="mock-product-img" style="background:#0F1F3D">🎧</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#1e3a5f"></div>
-                  <div class="mock-product-price" style="background:#3B82F6"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="mock-platform" style="background:#3B82F6;color:#fff">زد</span>
+      <!-- 2: عسل نورة -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/nora-honey.jpg" alt="عسل نورة" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر إلكترونيات وتقنية</h3>
-          <p>تصميم تقني مودرن — Tech Store</p>
-          <div class="ov-tags">
-            <span class="ov-tag">زد</span>
-            <span class="ov-tag">إلكترونيات</span>
-            <span class="ov-tag">داكن</span>
-          </div>
+          <h3>عسل نورة</h3>
+          <p>عسل جنوبي فاخر</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عسل</span></div>
         </div>
       </div>
 
-      <!-- ③ متجر عطور - سلة (أسود/بنفسجي فاخر) -->
+      <!-- 3: Black Bear -->
       <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.2s">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">salla.sa/store-parfum</div>
-          </div>
-          <div style="background:#0D0010;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#130019;border-bottom:1px solid rgba(167,139,250,.2)">
-              <div class="mock-logo-box" style="color:#A78BFA;font-size:.7rem">✦ PARFUM</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#A78BFA"></div>
-                <div class="mock-nav-link" style="background:#A78BFA"></div>
-                <div class="mock-nav-link" style="background:#A78BFA"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#A78BFA;color:#A78BFA">🛍</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#1a0033,#2d0052);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#A78BFA"></div>
-                <div class="mock-h2" style="background:rgba(167,139,250,.4)"></div>
-                <div class="mock-hero-btn" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">اكتشفي</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#2d0052,#4c0087)">🌹</div>
-            </div>
-            <div class="mock-products-label" style="color:#A78BFA">عطورنا المميزة</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#130019;border:1px solid rgba(167,139,250,.2)">
-                <div class="mock-product-img" style="background:#1a0033">🧴</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#2d0052"></div>
-                  <div class="mock-product-price" style="background:#7C3AED"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#130019;border:1px solid rgba(167,139,250,.2)">
-                <div class="mock-product-img" style="background:#1a0033">🌸</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#2d0052"></div>
-                  <div class="mock-product-price" style="background:#7C3AED"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#130019;border:1px solid rgba(167,139,250,.2)">
-                <div class="mock-product-img" style="background:#1a0033">✨</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#2d0052"></div>
-                  <div class="mock-product-price" style="background:#7C3AED"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#130019;border:1px solid rgba(167,139,250,.2)">
-                <div class="mock-product-img" style="background:#1a0033">💐</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#2d0052"></div>
-                  <div class="mock-product-price" style="background:#7C3AED"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="images/black-bear.jpg" alt="Black Bear" class="portfolio-img">
         <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر عطور فاخرة</h3>
-          <p>طابع فاخر داكن — Parfum</p>
-          <div class="ov-tags">
-            <span class="ov-tag">سلة</span>
-            <span class="ov-tag">عطور</span>
-            <span class="ov-tag">فخامة</span>
-          </div>
+          <h3>Black Bear</h3>
+          <p>ملابس وأزياء عصرية</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">أزياء</span></div>
         </div>
       </div>
 
-      <!-- ④ متجر أثاث وديكور - زد (ترابي/دافئ) -->
-      <div class="portfolio-card fade-up" data-cat="zid" style="transition-delay:.1s">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">zid.sa/store-decor</div>
-          </div>
-          <div style="background:#F9F5F0;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#fff;border-bottom:1px solid #e8ddd3">
-              <div class="mock-logo-box" style="color:#7C5C3E;font-size:.7rem">🏡 CASA DECOR</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#7C5C3E"></div>
-                <div class="mock-nav-link" style="background:#7C5C3E"></div>
-                <div class="mock-nav-link" style="background:#7C5C3E"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#7C5C3E;color:#7C5C3E">🛒</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#e8ddd3,#f5ede4);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#7C5C3E"></div>
-                <div class="mock-h2" style="background:rgba(124,92,62,.4)"></div>
-                <div class="mock-hero-btn" style="background:#7C5C3E">تسوق الآن</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#d4b896,#b8966a)">🛋️</div>
-            </div>
-            <div class="mock-products-label" style="color:#7C5C3E">أثاث مختار</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#fff;border:1px solid #e8ddd3">
-                <div class="mock-product-img" style="background:#fdf5ec">🪑</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#d4c4b4"></div>
-                  <div class="mock-product-price" style="background:#7C5C3E"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #e8ddd3">
-                <div class="mock-product-img" style="background:#fdf5ec">🪞</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#d4c4b4"></div>
-                  <div class="mock-product-price" style="background:#7C5C3E"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #e8ddd3">
-                <div class="mock-product-img" style="background:#fdf5ec">🖼️</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#d4c4b4"></div>
-                  <div class="mock-product-price" style="background:#7C5C3E"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #e8ddd3">
-                <div class="mock-product-img" style="background:#fdf5ec">🏺</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#d4c4b4"></div>
-                  <div class="mock-product-price" style="background:#7C5C3E"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="mock-platform" style="background:#3B82F6;color:#fff">زد</span>
+      <!-- 4: متجر الفيب -->
+      <div class="portfolio-card fade-up" data-cat="salla">
+        <img src="images/vape-1.jpg" alt="متجر الفيب" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر أثاث وديكور</h3>
-          <p>نمط عصري دافئ — Casa Decor</p>
-          <div class="ov-tags">
-            <span class="ov-tag">زد</span>
-            <span class="ov-tag">أثاث</span>
-            <span class="ov-tag">ترابي</span>
-          </div>
+          <h3>متجر الفيب</h3>
+          <p>سحبات وأجهزة إلكترونية</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">إلكتروني</span></div>
         </div>
       </div>
 
-      <!-- ⑤ متجر أطفال - سلة (ألوان مرحة) -->
+      <!-- 5: قهوة ماستر -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/coffee-master.jpg" alt="قهوة ماستر" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>قهوة ماستر</h3>
+          <p>متخصص في عالم القهوة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">قهوة</span></div>
+        </div>
+      </div>
+
+      <!-- 6: دار لويسا -->
+      <div class="portfolio-card fade-up" data-cat="zid" style="transition-delay:.2s">
+        <img src="images/dar-louisa.jpg" alt="عبايات دار لويسا" class="portfolio-img">
+        <span class="mock-platform" style="background:#6B21A8;color:#fff">زد</span>
+        <div class="portfolio-overlay">
+          <h3>عبايات دار لويسا</h3>
+          <p>أزياء نسائية راقية</p>
+          <div class="ov-tags"><span class="ov-tag">زد</span><span class="ov-tag">عبايات</span></div>
+        </div>
+      </div>
+
+      <!-- 7: DF -->
+      <div class="portfolio-card fade-up" data-cat="salla">
+        <img src="images/df.jpg" alt="DF" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>DF Fashion</h3>
+          <p>فساتين ومحجبات متنوعة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">أزياء</span></div>
+        </div>
+      </div>
+
+      <!-- 8: بوتيك عنق المها -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/maha-boutique.jpg" alt="بوتيك عنق المها" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>بوتيك عنق المها</h3>
+          <p>فساتين وعبايات فاخرة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">فساتين</span></div>
+        </div>
+      </div>
+
+      <!-- 9: متجر الشيشة -->
       <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.2s">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">salla.sa/store-kids</div>
-          </div>
-          <div style="background:#FFF8F0;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#fff;border-bottom:2px solid #FFD700">
-              <div class="mock-logo-box" style="color:#FF6B35;font-size:.7rem">🧸 MINI WORLD</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#FF6B35"></div>
-                <div class="mock-nav-link" style="background:#4CAF50"></div>
-                <div class="mock-nav-link" style="background:#2196F3"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#FF6B35;color:#FF6B35">🛍</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#FFE0CC,#FFF3CC);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#FF6B35"></div>
-                <div class="mock-h2" style="background:rgba(255,107,53,.4)"></div>
-                <div class="mock-hero-btn" style="background:#FF6B35">تسوق الآن</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#ffd280,#ffb347)">🧸</div>
-            </div>
-            <div class="mock-products-label" style="color:#FF6B35">منتجاتنا للأطفال</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#fff;border:1px solid #ffddd0;border-radius:8px">
-                <div class="mock-product-img" style="background:#fff0e8">🎠</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#ffd0b8"></div>
-                  <div class="mock-product-price" style="background:#FF6B35"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #d0f0d0;border-radius:8px">
-                <div class="mock-product-img" style="background:#e8fae8">🎒</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#c0e8c0"></div>
-                  <div class="mock-product-price" style="background:#4CAF50"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #d0e0ff;border-radius:8px">
-                <div class="mock-product-img" style="background:#e8eeff">🧩</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#c0d0f8"></div>
-                  <div class="mock-product-price" style="background:#2196F3"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#fff;border:1px solid #fff0d0;border-radius:8px">
-                <div class="mock-product-img" style="background:#fffae0">🎨</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#f8e8a0"></div>
-                  <div class="mock-product-price" style="background:#FFC107"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="images/vape-2.jpg" alt="متجر الشيشة والأركيلة" class="portfolio-img">
         <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر ملابس وألعاب أطفال</h3>
-          <p>ألوان مرحة وحيوية — Mini World</p>
-          <div class="ov-tags">
-            <span class="ov-tag">سلة</span>
-            <span class="ov-tag">أطفال</span>
-            <span class="ov-tag">مرح</span>
-          </div>
+          <h3>متجر الشيشة</h3>
+          <p>أراجيل وشيشة ومستلزماتها</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">أركيلة</span></div>
         </div>
       </div>
 
-      <!-- ⑥ متجر رياضي - زد (داكن/أخضر/نيون) -->
-      <div class="portfolio-card fade-up" data-cat="zid" style="transition-delay:.3s">
-        <div class="store-mockup">
-          <div class="mock-chrome">
-            <div class="mock-dot mock-dot-r"></div>
-            <div class="mock-dot mock-dot-y"></div>
-            <div class="mock-dot mock-dot-g"></div>
-            <div class="mock-url">zid.sa/store-sport</div>
-          </div>
-          <div style="background:#050F08;flex:1;display:flex;flex-direction:column;overflow:hidden">
-            <div class="mock-nav" style="background:#091410;border-bottom:1px solid rgba(0,230,118,.2)">
-              <div class="mock-logo-box" style="color:#00E676;font-size:.7rem">⚡ SPORT ZONE</div>
-              <div class="mock-nav-links">
-                <div class="mock-nav-link" style="background:#00E676"></div>
-                <div class="mock-nav-link" style="background:#00E676"></div>
-                <div class="mock-nav-link" style="background:#00E676"></div>
-              </div>
-              <div class="mock-cart" style="border-color:#00E676;color:#00E676">🛒</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,#0A2010,#153020);padding:12px 10px;min-height:70px">
-              <div class="mock-hero-text">
-                <div class="mock-h1" style="background:#00E676"></div>
-                <div class="mock-h2" style="background:rgba(0,230,118,.3)"></div>
-                <div class="mock-hero-btn" style="background:#00E676;color:#050F08">تسوق الآن</div>
-              </div>
-              <div class="mock-hero-img" style="background:linear-gradient(135deg,#1a3a20,#264d30)">⚽</div>
-            </div>
-            <div class="mock-products-label" style="color:#00E676">معداتنا الرياضية</div>
-            <div class="mock-products">
-              <div class="mock-product" style="background:#091410;border:1px solid rgba(0,230,118,.15)">
-                <div class="mock-product-img" style="background:#0A2010">🏋️</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#153020"></div>
-                  <div class="mock-product-price" style="background:#00E676"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#091410;border:1px solid rgba(0,230,118,.15)">
-                <div class="mock-product-img" style="background:#0A2010">👟</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#153020"></div>
-                  <div class="mock-product-price" style="background:#00E676"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#091410;border:1px solid rgba(0,230,118,.15)">
-                <div class="mock-product-img" style="background:#0A2010">🎽</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#153020"></div>
-                  <div class="mock-product-price" style="background:#00E676"></div>
-                </div>
-              </div>
-              <div class="mock-product" style="background:#091410;border:1px solid rgba(0,230,118,.15)">
-                <div class="mock-product-img" style="background:#0A2010">🏊</div>
-                <div class="mock-product-info">
-                  <div class="mock-product-name" style="background:#153020"></div>
-                  <div class="mock-product-price" style="background:#00E676"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="mock-platform" style="background:#3B82F6;color:#fff">زد</span>
+      <!-- 10: لیدر ستور -->
+      <div class="portfolio-card fade-up" data-cat="salla">
+        <img src="images/lider.jpg" alt="لیدر ستور" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
         <div class="portfolio-overlay">
-          <h3>متجر معدات رياضية</h3>
-          <p>طاقة ونشاط وقوة — Sport Zone</p>
-          <div class="ov-tags">
-            <span class="ov-tag">زد</span>
-            <span class="ov-tag">رياضي</span>
-            <span class="ov-tag">نيون</span>
-          </div>
+          <h3>LiDER Store</h3>
+          <p>منتجات اللحية الطبيعية</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عناية</span></div>
+        </div>
+      </div>
+
+      <!-- 11: خزنة جهيلة -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/khazana.jpg" alt="خزنة جهيلة" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>خزنة جهيلة</h3>
+          <p>جلابيات وفساتين مميزة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">جلابيات</span></div>
+        </div>
+      </div>
+
+      <!-- 12: أزال بيوتي -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.2s">
+        <img src="images/azal-beauty.jpg" alt="أزال بيوتي" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>أزال بيوتي</h3>
+          <p>تجهيزات وأجهزة الصالونات</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">تجميل</span></div>
+        </div>
+      </div>
+
+      <!-- 13: عبايات غنف -->
+      <div class="portfolio-card fade-up" data-cat="zid">
+        <img src="images/ghanf.jpg" alt="عبايات غنف" class="portfolio-img">
+        <span class="mock-platform" style="background:#6B21A8;color:#fff">زد</span>
+        <div class="portfolio-overlay">
+          <h3>عبايات غنف</h3>
+          <p>عبايات سوداء وملونة</p>
+          <div class="ov-tags"><span class="ov-tag">زد</span><span class="ov-tag">عبايات</span></div>
+        </div>
+      </div>
+
+      <!-- 14: الجمال العربي -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/arabic-beauty.jpg" alt="الجمال العربي" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>الجمال العربي</h3>
+          <p>مستحضرات عناية بالبشرة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عناية</span></div>
+        </div>
+      </div>
+
+      <!-- 15: أدم -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.2s">
+        <img src="images/adam-honey.jpg" alt="أدم للعسل" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>أدم للعسل</h3>
+          <p>أجود أنواع العسل الطبيعي</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عسل</span></div>
+        </div>
+      </div>
+
+      <!-- 16: شبوسة البلد -->
+      <div class="portfolio-card fade-up" data-cat="salla">
+        <img src="images/shboosa.jpg" alt="شبوسة البلد" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>شبوسة البلد</h3>
+          <p>طلبات جاهزة ومفرزنات</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">طعام</span></div>
+        </div>
+      </div>
+
+      <!-- 17: بيت العود -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.1s">
+        <img src="images/oud-house.jpg" alt="بيت العود" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>بيت العود</h3>
+          <p>عود وبخور وأدخنة فاخرة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عود</span></div>
+        </div>
+      </div>
+
+      <!-- 18: عود العطارين -->
+      <div class="portfolio-card fade-up" data-cat="salla" style="transition-delay:.2s">
+        <img src="images/attareen.jpg" alt="عود العطارين" class="portfolio-img">
+        <span class="mock-platform" style="background:#C9A84C;color:#06060F">سلة</span>
+        <div class="portfolio-overlay">
+          <h3>عود العطارين</h3>
+          <p>عود ومسك وأدهان فاخرة</p>
+          <div class="ov-tags"><span class="ov-tag">سلة</span><span class="ov-tag">عود</span></div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- ══════════ PLATFORMS ══════════ -->
+<div class="platforms-strip">
+  <div class="container">
+    <p class="platforms-label">منصات نعمل عليها</p>
+    <div class="platforms-logos">
+      <img src="images/logo-salla.png" alt="سلة" class="platform-logo">
+      <img src="images/logo-zid.png" alt="زد" class="platform-logo">
+      <img src="images/logo-shopify.png" alt="Shopify" class="platform-logo">
+      <img src="images/logo-wordpress.png" alt="WordPress" class="platform-logo">
+      <img src="images/logo-izhalha.png" alt="إزهلها" class="platform-logo">
+      <img src="images/logo-whatsapp.png" alt="WhatsApp" class="platform-logo">
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ TESTIMONIALS ══════════ -->
 <section id="testimonials" class="testi-bg">
