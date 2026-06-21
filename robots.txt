@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://g12ld.github.io/leith-portfolio/sitemap.xml
