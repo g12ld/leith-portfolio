@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://g12ld.github.io/leith-portfolio/sitemap.xml
+Sitemap: https://laith-designer.vercel.app/sitemap.xml
